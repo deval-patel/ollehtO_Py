@@ -50,6 +50,14 @@ class Board:
         """
         return not (row > 7 or column > 7 or row < 0 or column < 0)
 
+    def get_player(self, row: int, column: int):
+        """
+        Return a player that is located at the given location.
+        """
+        if self.is_valid_coordinate(row, column):
+            return self.board[row][column]
+        return self.no_players
+
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
