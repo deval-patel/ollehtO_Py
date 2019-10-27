@@ -6,8 +6,12 @@ from othello.Application.Widgets.ButtonFrame import ButtonFrame
 
 class Application:
     """
+<<<<<<< HEAD
     This class runs the GUI and sets up the main frames in the root of the GUI, it uses ImageFrame and ButtonFrame
     to help set up the widgets
+=======
+    TODO: Explain
+>>>>>>> e19af33... Made a GUI for ollehtO, has main Application class which is used to run the GUI, has supporting widget classes, in the package Widget, also contains pictures for the GUI to use
     """
     frame: Frame
     header: Label
