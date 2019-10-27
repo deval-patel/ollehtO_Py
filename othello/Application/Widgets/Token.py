@@ -1,4 +1,4 @@
-pip from tkinter import *
+from tkinter import *
 
 
 class Token(Button):
