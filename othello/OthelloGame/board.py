@@ -43,6 +43,13 @@ class Board:
         self.board[4][4] = player1
         self.board[4][3] = player2
 
+    @staticmethod
+    def is_valid_coordinate(row: int, column: int) -> bool:
+        """
+        Return whether given coordinate is a valid location on the board
+        """
+        return not (row > 7 or column > 7 or row < 0 or column < 0)
+
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
