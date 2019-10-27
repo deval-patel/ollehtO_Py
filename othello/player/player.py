@@ -1,4 +1,4 @@
-from othello.OthelloGame.othello import Othello
+from othello.Controllers.othello import Othello
 
 
 class Player:
