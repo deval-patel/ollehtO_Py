@@ -15,15 +15,15 @@ class Othello:
         The reference to the board object of this game.
     """
 
-    _whose_turn = Board.player1
+    _current_player = Board.player1
     _board = Board()
 
-    def get_whose_turn(self) -> str:
+    def get_current_player(self) -> str:
         """
         Return the string value of the current player who has the turn
         """
 
-        return self._whose_turn
+        return self._current_player
 
     def get_board(self) -> Board:
         """
@@ -41,22 +41,22 @@ class Othello:
         control of the current player. Return false if the move was unsuccessful
         """
 
-        if self._board.move(row, col, self.get_whose_turn()):
-            if (self._board.has_move() == Board.both) or (self.board.has_move() == Board.both):
-                self._whose_turn = Board.other_player(self.get_whose_turn())
+        if self._board.move(row, col, self.get_current_player()):
+            if (self._board.has_move() == Board.both) or (self._board.has_move() == Board.both):
+                self._current_player = Board.other_player(self.get_current_player())
 
             return True
         else:
             return False
 
-    def get_count(self, player: str) -> int:
+    def piece_count(self, player: str) -> int:
         """
         Return how many pieces player has on the board
         """
 
         return self._board.get_count(player)
 
-    def is_game_over(self) -> bool:
+    def check_game_over(self) -> bool:
         """
         Return if the game is over or no depending on whether
         one or more players can make a move on the board
@@ -66,16 +66,16 @@ class Othello:
         else:
             return False
 
-    def get_winner(self) -> str:
+    def check_winner(self) -> str:
         """
         Return the string value of the player who won based on
         Othello game rules.
         """
-        if not self.is_game_over():
+        if not self.check_game_over():
             return Board.no_players
 
-        player_one_count = self.get_count(Board.player1)
-        player_two_count = self.get_count(Board.player2)
+        player_one_count = self.piece_count(Board.player1)
+        player_two_count = self.piece_count(Board.player2)
 
         if player_one_count > player_two_count:
             return Board.player1
@@ -83,3 +83,11 @@ class Othello:
             return Board.player2
         else:
             return Board.no_players
+
+    def get_board_string(self):
+        """
+        Return the string representation of the current game state and
+        board state
+        """
+
+        return self._board.__str__
