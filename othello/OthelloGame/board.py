@@ -50,6 +50,40 @@ class Board:
         """
         return not (row > 7 or column > 7 or row < 0 or column < 0)
 
+    def get_player(self, row: int, column: int):
+        """
+        Return a player that is located at the given location.
+        """
+        if self.is_valid_coordinate(row, column):
+            return self.board[row][column]
+        return self.no_players
+
+    def player_variation(self, row: int, column: int, row_move: int, column_move: int) -> str:
+        """
+        Return a string representation of player that has a variation of
+        current player followed by an opposing player starting at <row> and
+        <column> coordinates in a direction of <row_move> and <column_move>.
+        If no variation is found then return <no_players>.
+        """
+
+        # Prevent infinite loops
+        if row_move == 0 and column_move == 0:
+            return self.no_players
+
+        first_player = self.get_player(row, column)
+
+        while self.is_valid_coordinate(row, column):
+            current_player = self.get_player(row, column)
+
+            if current_player == self.no_players:
+                return self.no_players
+
+            elif current_player != first_player:
+                return current_player
+
+            row += row_move
+            column += column_move
+
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
@@ -59,7 +93,7 @@ class Board:
 
         for i in range(8):
             visual += str(i) + " "
-        visual += "\n" + "-" * 17
+        visual += "\n" + "-" * 18
 
         for row in self.board:
             visual += "\n"
