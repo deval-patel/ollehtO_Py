@@ -46,7 +46,6 @@ class Board:
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
-        :return: str
         """
         visual = "  "
         current_col = 0
