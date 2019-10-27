@@ -42,3 +42,28 @@ class Board:
         self.board[3][4] = player2
         self.board[4][4] = player1
         self.board[4][3] = player2
+
+    def __str__(self) -> str:
+        """
+        Return a representation of board in a formatted string.
+        :return: str
+        """
+        visual = "  "
+        current_col = 0
+
+        for i in range(8):
+            visual += str(i) + " "
+        visual += "\n" + "-" * 17
+
+        for row in self.board:
+            visual += "\n"
+            visual += str(current_col) + "|"
+            current_col += 1
+
+            for column in row:
+                visual += column
+                visual += "|"
+
+            visual += "\n" + "-" * 18
+
+        return visual
