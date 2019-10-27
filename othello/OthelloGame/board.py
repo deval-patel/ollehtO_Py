@@ -93,7 +93,7 @@ class Board:
 
         for i in range(8):
             visual += str(i) + " "
-        visual += "\n" + "-" * 17
+        visual += "\n" + "-" * 18
 
         for row in self.board:
             visual += "\n"
