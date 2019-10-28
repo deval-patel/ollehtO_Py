@@ -61,6 +61,18 @@ class Board:
             return self.board[row][column]
         return self.no_players
 
+    def opposing_player(self, player) -> str:
+        """
+        Return the opposing player of the given <player> or <no_players>
+        if none exist at the given location.
+        """
+        if player == self.player1:
+            return self.player2
+        elif player == self.player2:
+            return self.player1
+        else:
+            return self.no_players
+
     def player_variation(self, row: int, column: int, row_move: int, column_move: int) -> str:
         """
         Return a string representation of player that has a variation of
