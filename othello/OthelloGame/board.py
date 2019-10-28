@@ -87,6 +87,34 @@ class Board:
             row += row_move
             column += column_move
 
+    def flip_tokens(self, player: str, row: int, column: int, row_move: int, column_move: int) -> int:
+        """
+        Flip all of the tokens from starting position <row> and <column> into
+        the direction <row_move> and <column_move> by the <player>.
+        """
+        row += row_move
+        column += column_move
+        current_player = self.get_player(row, column)
+
+        if (current_player == self.no_players) or \
+                (current_player == player) or \
+                (row_move == 0 and column_move == 0) or \
+                not (self.is_valid_coordinate(row, column)):
+            return 0
+
+        elif self.player_variation(row, column, row_move, column_move) == player:
+            tokens_flipped = 0
+
+            while current_player == self.opposing_player(player):
+                row += row_move
+                column += column_move
+                tokens_flipped += 1
+                current_player = self.get_player(row, column)
+            return tokens_flipped
+
+        else:
+            return 0
+
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
