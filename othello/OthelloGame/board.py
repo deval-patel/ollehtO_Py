@@ -61,7 +61,7 @@ class Board:
             return self.board[row][column]
         return self.no_players
 
-    def opposing_player(self, player) -> str:
+    def opposing_player(self, player: str) -> str:
         """
         Return the opposing player of the given <player> or <no_players>
         if none exist at the given location.
