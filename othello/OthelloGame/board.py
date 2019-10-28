@@ -73,6 +73,18 @@ class Board:
         else:
             return self.no_players
 
+    def get_token_count(self, player):
+        """
+        Return the number of tokens player has on the board.
+        """
+        tokens = 0
+
+        for row in range(8):
+            for column in range(8):
+                if self.board[row][column] == player:
+                    tokens += 1
+        return tokens
+
     def player_variation(self, row: int, column: int, row_move: int, column_move: int) -> str:
         """
         Return a string representation of player that has a variation of
