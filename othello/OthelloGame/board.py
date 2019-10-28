@@ -15,10 +15,13 @@ class Board:
         Represents first player's token
     player2:
         Represents second player's token
+    board:
+        Represents board that consists of lists of lists
     """
     no_players: str
     player1: str
     player2: str
+    board: list
 
     def __init__(self):
         """
