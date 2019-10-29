@@ -143,23 +143,23 @@ class Board:
         else:
             return 0
 
+    def _possible_move(self, row: int, column: int, row_move: int, column_move: int):
+        """
+        Helper function determining which player could move into a
+        given direction.
+        """
+        if not self.is_valid_coordinate(row, column):
+            return self.no_players
+        elif self.get_player(row, column) == self.no_players:
+            return self.player_variation(row + row_move, column + column_move, row_move, column_move)
+        else:
+            return self.no_players
+
     def has_move(self) -> str:
         """
         Return which player has a possible move, or <both_players> if both
         players have a valid move or <no_players> if neither do.
         """
-        def _possible_move(row: int, column: int, row_move: int, column_move: int):
-            """
-            Helper function determining which player could move into a
-            given direction.
-            """
-            if not self.is_valid_coordinate(row, column):
-                return self.no_players
-            elif self.get_player(row, column) == self.no_players:
-                return self.player_variation(row + row_move, column + column_move,
-                                             row_move, column_move)
-            else:
-                return self.no_players
 
         player1_move = False
         player2_move = False
@@ -168,7 +168,7 @@ class Board:
                 for row_move in (-1, 0, 1):
                     for column_move in (-1, 0, 1):
 
-                        token_moved = _possible_move(row, column, row_move, column_move)
+                        token_moved = self._possible_move(row, column, row_move, column_move)
                         if token_moved == self.player1:
                             player1_move = True
                         if token_moved == self.player2:
