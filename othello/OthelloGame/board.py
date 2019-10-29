@@ -185,6 +185,28 @@ class Board:
         else:
             return self.no_players
 
+    def move(self, player: str, row: int, column: int) -> bool:
+        """
+        This function is responsible for making <player> at a given location.
+        Returns whether player has moved, and modifies the board if so.
+        """
+        if not self.is_valid_coordinate(row, column) or self.board[row][column] == self.no_players:
+            return False
+
+        moved = False
+
+        for row_move in (-1, 0, 1):
+            for column_move in (-1, 0, 1):
+                token_moved = self._possible_move(row, column, row_move, column_move)
+                if token_moved == self.both_players or token_moved == player:
+                    if self.flip_tokens(player, row, column, row_move, column_move) >= 1:
+                        moved = True
+
+        if moved:
+            self.board[row][column] = player
+
+        return moved
+
     def __str__(self) -> str:
         """
         Return a representation of board in a formatted string.
@@ -208,3 +230,4 @@ class Board:
             visual += "\n" + "-" * 18
 
         return visual
+
