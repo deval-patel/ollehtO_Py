@@ -8,6 +8,8 @@ class Board:
     player requesting a move.
 
         === Public Attributes ===
+    both_players:
+        String declaring that both players can make a move.
     no_players:
         Empty space declaring that there are no players located in
         current position.
@@ -18,6 +20,7 @@ class Board:
     board:
         Represents board that consists of lists of lists
     """
+    both_players: str
     no_players: str
     player1: str
     player2: str
@@ -30,6 +33,7 @@ class Board:
         play a game of Othello.
         """
 
+        both_players = "both"
         no_players = " "
         player1 = "1"
         player2 = "2"
@@ -138,6 +142,48 @@ class Board:
 
         else:
             return 0
+
+    def has_move(self) -> str:
+        """
+        Return which player has a possible move, or <both_players> if both
+        players have a valid move or <no_players> if neither do.
+        """
+        def _possible_move(row: int, column: int, row_move: int, column_move: int):
+            """
+            Helper function determining which player could move into a
+            given direction.
+            """
+            if not self.is_valid_coordinate(row, column):
+                return self.no_players
+            elif self.get_player(row, column) == self.no_players:
+                return self.player_variation(row + row_move, column + column_move,
+                                             row_move, column_move)
+            else:
+                return self.no_players
+
+        player1_move = False
+        player2_move = False
+        for row in range(8):
+            for column in range(8):
+                for row_move in (-1, 0, 1):
+                    for column_move in (-1, 0, 1):
+
+                        token_moved = _possible_move(row, column, row_move, column_move)
+                        if token_moved == self.player1:
+                            player1_move = True
+                        if token_moved == self.player2:
+                            player2_move = True
+                        if player1_move and player2_move:
+                            return self.both_players
+
+        if player1_move and player2_move:
+            return self.both_players
+        elif player1_move:
+            return self.player1
+        elif player2_move:
+            return self.player2
+        else:
+            return self.no_players
 
     def __str__(self) -> str:
         """
