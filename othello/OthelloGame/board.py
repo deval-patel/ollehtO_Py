@@ -182,8 +182,9 @@ class Board:
 
     def move(self, player: str, row: int, column: int) -> bool:
         """
-        This function is responsible for making <player> at a given location.
-        Returns whether player has moved, and modifies the board if so.
+        This function is responsible for making <player> move at a
+        given location. Returns whether player has moved, and modifies
+        the board if so.
         """
         if not self.is_valid_coordinate(row, column) or self.board[row][column] == Board.no_players:
             return False
