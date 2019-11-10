@@ -20,11 +20,11 @@ class Board:
     board:
         Represents board that consists of lists of lists
     """
-    both_players: str
-    no_players: str
-    player1: str
-    player2: str
-    board: list
+
+    both_players: str = "both"
+    no_players: str = " "
+    player1: str = "1"
+    player2: str = "2"
 
     def __init__(self):
         """
@@ -33,22 +33,17 @@ class Board:
         play a game of Othello.
         """
 
-        both_players = "both"
-        no_players = " "
-        player1 = "1"
-        player2 = "2"
-
         self.board = []
 
         for i in range(8):
             self.board.append([])
             for j in range(8):
-                self.board[i].append(no_players)
+                self.board[i].append(Board.no_players)
 
-        self.board[3][3] = player1
-        self.board[3][4] = player2
-        self.board[4][4] = player1
-        self.board[4][3] = player2
+        self.board[3][3] = Board.player1
+        self.board[3][4] = Board.player2
+        self.board[4][4] = Board.player1
+        self.board[4][3] = Board.player2
 
     @staticmethod
     def is_valid_coordinate(row: int, column: int) -> bool:
@@ -63,19 +58,19 @@ class Board:
         """
         if self.is_valid_coordinate(row, column):
             return self.board[row][column]
-        return self.no_players
+        return Board.no_players
 
     def opposing_player(self, player: str) -> str:
         """
         Return the opposing player of the given <player> or <no_players>
         if none exist at the given location.
         """
-        if player == self.player1:
-            return self.player2
-        elif player == self.player2:
-            return self.player1
+        if player == Board.player1:
+            return Board.player2
+        elif player == Board.player2:
+            return Board.player1
         else:
-            return self.no_players
+            return Board.no_players
 
     def get_token_count(self, player):
         """
@@ -99,15 +94,15 @@ class Board:
 
         # Prevent infinite loops
         if row_move == 0 and column_move == 0:
-            return self.no_players
+            return Board.no_players
 
         first_player = self.get_player(row, column)
 
         while self.is_valid_coordinate(row, column):
             current_player = self.get_player(row, column)
 
-            if current_player == self.no_players:
-                return self.no_players
+            if current_player == Board.no_players:
+                return Board.no_players
 
             elif current_player != first_player:
                 return current_player
@@ -124,7 +119,7 @@ class Board:
         column += column_move
         current_player = self.get_player(row, column)
 
-        if (current_player == self.no_players) or \
+        if (current_player == Board.no_players) or \
                 (current_player == player) or \
                 (row_move == 0 and column_move == 0) or \
                 not (self.is_valid_coordinate(row, column)):
@@ -149,11 +144,11 @@ class Board:
         given direction.
         """
         if not self.is_valid_coordinate(row, column):
-            return self.no_players
-        elif self.get_player(row, column) == self.no_players:
+            return Board.no_players
+        elif self.get_player(row, column) == Board.no_players:
             return self.player_variation(row + row_move, column + column_move, row_move, column_move)
         else:
-            return self.no_players
+            return Board.no_players
 
     def has_move(self) -> str:
         """
@@ -169,9 +164,9 @@ class Board:
                     for column_move in (-1, 0, 1):
 
                         token_moved = self._possible_move(row, column, row_move, column_move)
-                        if token_moved == self.player1:
+                        if token_moved == Board.player1:
                             player1_move = True
-                        if token_moved == self.player2:
+                        if token_moved == Board.player2:
                             player2_move = True
                         if player1_move and player2_move:
                             return self.both_players
@@ -179,18 +174,18 @@ class Board:
         if player1_move and player2_move:
             return self.both_players
         elif player1_move:
-            return self.player1
+            return Board.player1
         elif player2_move:
-            return self.player2
+            return Board.player2
         else:
-            return self.no_players
+            return Board.no_players
 
     def move(self, player: str, row: int, column: int) -> bool:
         """
         This function is responsible for making <player> at a given location.
         Returns whether player has moved, and modifies the board if so.
         """
-        if not self.is_valid_coordinate(row, column) or self.board[row][column] == self.no_players:
+        if not self.is_valid_coordinate(row, column) or self.board[row][column] == Board.no_players:
             return False
 
         moved = False
