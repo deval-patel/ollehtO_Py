@@ -53,25 +53,32 @@ class Controller:
 
         self.report_final()
 
-    def report(self):
+    def print_state(self):
         """
         Prints the current board state to the console
         """
 
-        raise NotImplementedError
+        string_report = self.othello.get_board_string() + Board.player1 + ":" + self.othello.piece_count(Board.player1)\
+                        + " " + Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " + \
+                        self.othello.get_current_player() + " moves next"
+        print(string_report)
 
-    def report_move(self, whose_turn: str, move: Move):
+    def print_move(self, whose_turn: str, move: Move):
         """
         Print the player who made a move and the move they
         made on the specific coordinates on the board to the
         console.
         """
 
-        raise NotImplementedError
+        string_report = whose_turn + " makes move: " + move
+        print(string_report)
 
-    def report_final(self):
+    def print_winner(self):
         """
         Print the final board state of the game and who won the game
         """
 
-        raise NotImplementedError
+        string_report = self.othello.get_board_string() + Board.player1 + ":" + self.othello.piece_count() + " " +\
+                        Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " +\
+                        self.othello.check_winner() + " won"
+        print(string_report)
