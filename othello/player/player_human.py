@@ -1,5 +1,5 @@
 from othello.player.player import Player
-from othello.Controllers.othello import Othello
+from othello.OthelloGame.othello import Othello
 from othello.player.move import Move
 
 
@@ -18,8 +18,7 @@ class PlayerHuman(Player):
     def __init__(self, othello: Othello, character: chr) -> None:
         """ Creates PlayerHuman.
         """
-        self._othello = othello
-        self._character = character
+        Player.__init__(self, othello, character)
 
     def getMove(self) -> tuple:
         """ Return the move that Player wants to make.
