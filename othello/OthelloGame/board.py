@@ -33,22 +33,22 @@ class Board:
         play a game of Othello.
         """
 
-        both_players = "both"
-        no_players = " "
-        player1 = "1"
-        player2 = "2"
+        self.both_players = "both"
+        self.no_players = "EMPTY"
+        self.player1 = "X"
+        self.player2 = "O"
 
         self.board = []
 
         for i in range(8):
             self.board.append([])
             for j in range(8):
-                self.board[i].append(no_players)
+                self.board[i].append(self.no_players)
 
-        self.board[3][3] = player1
-        self.board[3][4] = player2
-        self.board[4][4] = player1
-        self.board[4][3] = player2
+        self.board[3][3] = self.player1
+        self.board[3][4] = self.player2
+        self.board[4][4] = self.player1
+        self.board[4][3] = self.player2
 
     @staticmethod
     def is_valid_coordinate(row: int, column: int) -> bool:
