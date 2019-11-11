@@ -21,6 +21,11 @@ class Board:
         Represents board that consists of lists of lists
     """
 
+    both_players: str = "both"
+    no_players: str = "EMPTY"
+    player1: str = "X"
+    player2: str = "O"
+
     def __init__(self):
         """
         Construct a new Othello board which is an 8 by 8 list of lists
@@ -28,20 +33,16 @@ class Board:
         play a game of Othello.
         """
 
-        self.both_players = "both"
-        self.no_players = "EMPTY"
-        self.player1 = "X"
-        self.player2 = "O"
         self.board = []
 
         for i in range(8):
             self.board.append([])
             for j in range(8):
-                self.board[i].append(self.no_players)
-        self.board[3][3] = self.player1
-        self.board[3][4] = self.player2
-        self.board[4][4] = self.player1
-        self.board[4][3] = self.player2
+                self.board[i].append(Board.no_players)
+        self.board[3][3] = Board.player1
+        self.board[3][4] = Board.player2
+        self.board[4][4] = Board.player1
+        self.board[4][3] = Board.player2
 
     @staticmethod
     def is_valid_coordinate(row: int, column: int) -> bool:
