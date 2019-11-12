@@ -1,5 +1,5 @@
 from othello.player.player import Player
-from othello.Controllers.othello import Othello
+from othello.OthelloGame.othello import Othello
 from othello.player.move import Move
 
 

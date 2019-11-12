@@ -41,29 +41,31 @@ class Controller:
         """
         while not self.othello.check_game_over():
             whose_turn = self.othello.get_current_player()
-            self.report()
+            self.print_state()
 
             if whose_turn == Board.player1:
                 move = self.player_one.getMove()
             if whose_turn == Board.player2:
                 move = self.player_two.getMove()
 
-            self.report_move(whose_turn, move)
+            self.print_move(whose_turn, move)
             self.othello.move(move.getRow(), move.getCol())
 
-        self.report_final()
+        self.print_winner()
 
     def print_state(self):
         """
         Prints the current board state to the console
         """
 
-        string_report = self.othello.get_board_string() + Board.player1 + ":" + self.othello.piece_count(Board.player1)\
-                        + " " + Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " + \
-                        self.othello.get_current_player() + " moves next"
+        string_report = self.othello.get_board_string() + \
+                        Board.player1 + ":" + self.othello.piece_count(Board.player1) + " " + \
+                        Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " + \
+                        str(self.othello.get_current_player()) + " moves next"
         print(string_report)
 
-    def print_move(self, whose_turn: str, move: Move):
+    @staticmethod
+    def print_move(whose_turn: str, move: Move):
         """
         Print the player who made a move and the move they
         made on the specific coordinates on the board to the

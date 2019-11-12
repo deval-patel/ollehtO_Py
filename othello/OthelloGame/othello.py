@@ -54,11 +54,11 @@ class Othello:
         Return how many pieces player has on the board
         """
 
-        return self._board.get_count(player)
+        return self._board.piece_count(player)
 
     def check_game_over(self) -> bool:
         """
-        Return if the game is over or no depending on whether
+        Return if the game is over or not depending on whether
         one or more players can make a move on the board
         """
         if self._board.has_move == Board.no_players:
