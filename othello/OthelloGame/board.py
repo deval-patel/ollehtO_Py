@@ -185,7 +185,7 @@ class Board:
         given location. Returns whether player has moved, and modifies
         the board if so.
         """
-        if not self.is_valid_coordinate(row, column) or self.board[row][column] == Board.no_players:
+        if not self.is_valid_coordinate(row, column) or not self.board[row][column] == Board.no_players:
             return False
 
         moved = False
