@@ -1,5 +1,7 @@
 from tkinter import *
 from othello.Application.ColourScheme import ColourScheme
+
+
 class ButtonFrame(Frame):
     """
     Todo: Explain

@@ -22,9 +22,9 @@ class Board:
     """
 
     both_players: str = "both"
-    no_players: str = " "
-    player1: str = "1"
-    player2: str = "2"
+    no_players: str = "EMPTY"
+    player1: str = "X"
+    player2: str = "O"
 
     def __init__(self):
         """
@@ -39,7 +39,6 @@ class Board:
             self.board.append([])
             for j in range(8):
                 self.board[i].append(Board.no_players)
-
         self.board[3][3] = Board.player1
         self.board[3][4] = Board.player2
         self.board[4][4] = Board.player1
@@ -129,6 +128,7 @@ class Board:
             tokens_flipped = 0
 
             while current_player == self.opposing_player(player):
+                self.board[row][column] = player
                 row += row_move
                 column += column_move
                 tokens_flipped += 1
@@ -182,10 +182,11 @@ class Board:
 
     def move(self, player: str, row: int, column: int) -> bool:
         """
-        This function is responsible for making <player> at a given location.
-        Returns whether player has moved, and modifies the board if so.
+        This function is responsible for making <player> move at a
+        given location. Returns whether player has moved, and modifies
+        the board if so.
         """
-        if not self.is_valid_coordinate(row, column) or self.board[row][column] == Board.no_players:
+        if not self.is_valid_coordinate(row, column) or not self.board[row][column] == Board.no_players:
             return False
 
         moved = False

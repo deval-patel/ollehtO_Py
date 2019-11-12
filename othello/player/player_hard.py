@@ -1,7 +1,7 @@
 import random
 
 from othello.player.player import Player
-from othello.Controllers.othello import Othello
+from othello.OthelloGame.othello import Othello
 from othello.player.player_moves import PlayerMoves
 
 
@@ -23,8 +23,7 @@ class PlayerHard(Player):
     def __init__(self, othello: Othello, character: chr, chance: int) -> None:
         """ Creates PlayerHard.
         """
-        self._othello = othello
-        self._character = character
+        Player.__init__(self, othello, character)
         self._chance = chance
 
     def getMove(self) -> tuple:

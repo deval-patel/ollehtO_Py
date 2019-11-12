@@ -2,6 +2,7 @@ from tkinter import *
 from othello.Application.ColourScheme import ColourScheme
 from othello.Application.Widgets.ImageFrame import ImageFrame
 from othello.Application.Widgets.ButtonFrame import ButtonFrame
+from othello.OthelloGame.othello import Othello
 
 
 class Application:
@@ -15,15 +16,17 @@ class Application:
     message: StringVar
     message_label: Message
     colour: ColourScheme
+    othello: Othello
 
     def __init__(self, master):
+        self.othello = Othello()
         self.colour = ColourScheme()
         self.root = master
         self.root.config(bg=self.colour.BACKGROUND)
         self.header = Label(self.root, text="ollehtO", font=("Times", "30", "bold"), bg=self.colour.BACKGROUND,
                             foreground=self.colour.TEXT_COLOUR)
         self.header.grid(row=0, column=0)
-        self.images = ImageFrame(master=self.root, colour_scheme=self.colour)
+        self.images = ImageFrame(master=self.root, colour_scheme=self.colour, othello=self.othello)
         self.images.grid(row=1, column=0)
         self.message = StringVar()
         self.message_label = Message(self.root, textvariable=self.message, font=("Times New Roman", 16),
@@ -41,4 +44,5 @@ class Application:
 if __name__ == "__main__":
     root = Tk()
     app = Application(root)
+    print("made app")
     root.mainloop()

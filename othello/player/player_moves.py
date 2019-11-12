@@ -1,7 +1,7 @@
 import copy
 import random
 
-from othello.Controllers.othello import Othello
+from othello.OthelloGame.othello import Othello
 from othello.player.move import Move
 
 

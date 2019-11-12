@@ -15,8 +15,8 @@ class Othello:
         The reference to the board object of this game.
     """
 
-    _current_player = Board.player1
     _board = Board()
+    _current_player = _board.player1
 
     def get_current_player(self) -> str:
         """
@@ -40,11 +40,9 @@ class Othello:
         set _whose_turn to the other player. Else, the turn remains in
         control of the current player. Return false if the move was unsuccessful
         """
-
-        if self._board.move(row, col, self.get_current_player()):
-            if (self._board.has_move() == Board.both) or (self._board.has_move() == Board.both):
-                self._current_player = Board.other_player(self.get_current_player())
-
+        if self._board.move(row=row, column=col, player=self.get_current_player()):
+            if self._board.has_move() == self._board.both_players:
+                self._current_player = self._board.opposing_player(self.get_current_player())
             return True
         else:
             return False

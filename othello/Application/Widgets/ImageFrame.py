@@ -1,7 +1,5 @@
 from tkinter import *
 from othello.OthelloGame.othello import Othello
-from PIL import Image, ImageTk
-
 from othello.Application.Widgets.Token import Token
 from othello.Application.ColourScheme import ColourScheme
 # example = [["" for i in range(8)] for j in range(8)]
@@ -31,11 +29,15 @@ class ImageFrame(Frame):
         # Creating a 8 by 8 Image Buttons
         for row in range(8):
             for col in range(8):
-                # Opens image
-                im = Image.open("Pictures/" + str(self._board.board[row][col]) + ".png")
-                resized = im.resize((45, 45), Image.ANTIALIAS)
-                # Creates Image
-                temp_img = ImageTk.PhotoImage(resized)
-                temp = Token(x=row, y=col, master=self, image=temp_img, bd=0)
-                temp.image = temp_img
+                temp = Token(x=row, y=col, master=self, pic=self._board.board[row][col], bd=0)
                 temp.grid(row=row, column=col)
+
+    def update_othello(self, event: Token):
+        move = self._othello.move(event.get_x(), event.get_y())
+        print(move)
+        if move:
+            self._board = self._othello.get_board()
+            # TODO: Printing board to test output, please get rid of this once you fix the problem @Andrew
+            print(self._board)
+            for child in self.children.values():
+                child.set_image(self._board.board[child.get_x()][child.get_y()])
