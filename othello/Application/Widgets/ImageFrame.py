@@ -37,7 +37,7 @@ class ImageFrame(Frame):
         print(move)
         if move:
             self._board = self._othello.get_board()
+            # TODO: Printing board to test output, please get rid of this once you fix the problem @Andrew
+            print(self._board)
             for child in self.children.values():
-                print("loop executes")
-                child_token = self.children[child]
-                child_token.set_image(self._board.board[child_token.get_x()][child_token.get_y()])
+                child.set_image(self._board.board[child.get_x()][child.get_y()])

@@ -26,7 +26,12 @@ class Token(Button):
         return self._y
 
     def set_image(self, img_name: str):
-        self.config(image=self.pic.get_image(img_name))
+        img = self.pic.get_image(img_name)
+        self.config(image=img)
+        self.image = img
 
     def update_parent(self):
         self.master.update_othello(self)
+
+    def __str__(self):
+        return "x: " + str(self._x) + ", y: "  +str(self._y)
