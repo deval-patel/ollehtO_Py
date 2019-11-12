@@ -128,6 +128,7 @@ class Board:
             tokens_flipped = 0
 
             while current_player == self.opposing_player(player):
+                self.board[row][column] = player
                 row += row_move
                 column += column_move
                 tokens_flipped += 1
