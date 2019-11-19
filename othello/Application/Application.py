@@ -29,8 +29,8 @@ class Application:
         self.images = ImageFrame(master=self.root, colour_scheme=self.colour, othello=self.othello)
         self.images.grid(row=1, column=0)
         self.message = StringVar()
-        self.message_label = Message(self.root, textvariable=self.message, font=("Times New Roman", 16),
-                                     bg=self.colour.BACKGROUND, width=400,
+        self.message_label = Message(self.root, textvariable=self.message, font=("Roboto", 20),
+                                     bg=self.colour.BACKGROUND, width=600,
                                      justify=CENTER, foreground=self.colour.TEXT_COLOUR)
         self.message.set("This is where the message will be displayed")
         self.message_label.grid(row=2, column=0)
