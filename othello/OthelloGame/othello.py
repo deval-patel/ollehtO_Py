@@ -52,7 +52,7 @@ class Othello:
         Return how many pieces Player has on the board
         """
 
-        return self._board.piece_count(player)
+        return self._board.get_token_count(player)
 
     def check_game_over(self) -> bool:
         """
