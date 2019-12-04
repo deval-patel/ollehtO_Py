@@ -5,7 +5,7 @@ class Board:
     """
     Board class is responsible for keeping track of the board and everything
     that happens on it as well as handling board related tasks such as
-    player requesting a move.
+    Player requesting a move.
 
         === Public Attributes ===
     both_players:
@@ -14,9 +14,9 @@ class Board:
         Empty space declaring that there are no players located in
         current position.
     player1:
-        Represents first player's token
+        Represents first Player's token
     player2:
-        Represents second player's token
+        Represents second Player's token
     board:
         Represents board that consists of lists of lists
     """
@@ -29,7 +29,7 @@ class Board:
     def __init__(self):
         """
         Construct a new Othello board which is an 8 by 8 list of lists
-        containing empty spaces and default player positions used to
+        containing empty spaces and default Player positions used to
         play a game of Othello.
         """
 
@@ -53,7 +53,7 @@ class Board:
 
     def get_player(self, row: int, column: int):
         """
-        Return a player that is located at the given location.
+        Return a Player that is located at the given location.
         """
         if self.is_valid_coordinate(row, column):
             return self.board[row][column]
@@ -61,7 +61,7 @@ class Board:
 
     def opposing_player(self, player: str) -> str:
         """
-        Return the opposing player of the given <player> or <no_players>
+        Return the opposing Player of the given <Player> or <no_players>
         if none exist at the given location.
         """
         if player == Board.player1:
@@ -73,7 +73,7 @@ class Board:
 
     def get_token_count(self, player):
         """
-        Return the number of tokens player has on the board.
+        Return the number of tokens Player has on the board.
         """
         tokens = 0
 
@@ -85,8 +85,8 @@ class Board:
 
     def player_variation(self, row: int, column: int, row_move: int, column_move: int) -> str:
         """
-        Return a string representation of player that has a variation of
-        current player followed by an opposing player starting at <row> and
+        Return a string representation of Player that has a variation of
+        current Player followed by an opposing Player starting at <row> and
         <column> coordinates in a direction of <row_move> and <column_move>.
         If no variation is found then return <no_players>.
         """
@@ -112,7 +112,7 @@ class Board:
     def flip_tokens(self, player: str, row: int, column: int, row_move: int, column_move: int) -> int:
         """
         Flip all of the tokens from starting position <row> and <column> into
-        the direction <row_move> and <column_move> by the <player>.
+        the direction <row_move> and <column_move> by the <Player>.
         """
         row += row_move
         column += column_move
@@ -140,7 +140,7 @@ class Board:
 
     def _possible_move(self, row: int, column: int, row_move: int, column_move: int):
         """
-        Helper function determining which player could move into a
+        Helper function determining which Player could move into a
         given direction.
         """
         if not self.is_valid_coordinate(row, column):
@@ -152,7 +152,7 @@ class Board:
 
     def has_move(self) -> str:
         """
-        Return which player has a possible move, or <both_players> if both
+        Return which Player has a possible move, or <both_players> if both
         players have a valid move or <no_players> if neither do.
         """
 
@@ -182,8 +182,8 @@ class Board:
 
     def move(self, player: str, row: int, column: int) -> bool:
         """
-        This function is responsible for making <player> move at a
-        given location. Returns whether player has moved, and modifies
+        This function is responsible for making <Player> move at a
+        given location. Returns whether Player has moved, and modifies
         the board if so.
         """
         if not self.is_valid_coordinate(row, column) or not self.board[row][column] == Board.no_players:

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class ColourScheme:
     """
     The colour scheme for this application
@@ -11,11 +10,11 @@ class ColourScheme:
         self.BACKGROUND = "#558C3B"
         self.TEXT_COLOUR = "white"
         self.BUTTON_COLOUR = "#204037"
-	
+
     def set_background(self, bg: str):
 	"""
 	Set the background colour for this GUI
-	"""        
+	"""
 	self.BACKGROUND = bg
 
     def set_text_colour(self, tc: str):

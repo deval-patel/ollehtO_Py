@@ -1,5 +1,5 @@
 from othello.Controllers.controller import Controller
-from othello.player.player_human import PlayerHuman
+from othello.Player.player_human import PlayerHuman
 from othello.OthelloGame.board import Board
 
 

@@ -20,7 +20,7 @@ class Application:
     colour: ColourScheme
     othello: Othello
 
-    
+
     def __init__(self, master):
         self.othello = Othello()
         self.colour = ColourScheme()
@@ -40,11 +40,11 @@ class Application:
         self.buttons = ButtonFrame(self.root, self.colour)
         self.buttons.grid(row=3, column=0)
 
-    
+
     def set_message(self, msg: str):
 	"""
 	Sets the on screen message
-	""""
+	"""
         self.message.set(msg)
 
 

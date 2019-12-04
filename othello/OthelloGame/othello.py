@@ -9,7 +9,7 @@ class Othello:
 
     === Private Attributes ===
     _whose_turn:
-        The string value of the current player ("1" or "2")
+        The string value of the current Player ("1" or "2")
         depending on whose turn it is.
     _board:
         The reference to the board object of this game.
@@ -20,7 +20,7 @@ class Othello:
 
     def get_current_player(self) -> str:
         """
-        Return the string value of the current player who has the turn
+        Return the string value of the current Player who has the turn
         """
 
         return self._current_player
@@ -36,9 +36,9 @@ class Othello:
         """
         Attempt to make a move on the board on the coordinates row and
         col. Return true if move was successful and false otherwise. If
-        the other player has a move after the current player makes a move,
-        set _whose_turn to the other player. Else, the turn remains in
-        control of the current player. Return false if the move was unsuccessful
+        the other Player has a move after the current Player makes a move,
+        set _whose_turn to the other Player. Else, the turn remains in
+        control of the current Player. Return false if the move was unsuccessful
         """
         if self._board.move(row=row, column=col, player=self.get_current_player()):
             if self._board.has_move() == self._board.both_players:
@@ -49,7 +49,7 @@ class Othello:
 
     def piece_count(self, player: str) -> int:
         """
-        Return how many pieces player has on the board
+        Return how many pieces Player has on the board
         """
 
         return self._board.piece_count(player)
@@ -66,7 +66,7 @@ class Othello:
 
     def check_winner(self) -> str:
         """
-        Return the string value of the player who won based on
+        Return the string value of the Player who won based on
         Othello game rules.
         """
         if not self.check_game_over():

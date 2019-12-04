@@ -1,6 +1,6 @@
 from othello.OthelloGame.othello import Othello
-from othello.player.player import Player
-from othello.player.move import Move
+from othello.Player.player import Player
+from othello.Player.move import Move
 from othello.OthelloGame.board import Board
 
 
@@ -44,12 +44,12 @@ class Controller:
             self.print_state()
 
             if whose_turn == Board.player1:
-                move = self.player_one.getMove()
+                move = self.player_one.get_move()
             if whose_turn == Board.player2:
-                move = self.player_two.getMove()
+                move = self.player_two.get_move()
 
             self.print_move(whose_turn, move)
-            self.othello.move(move.getRow(), move.getCol())
+            self.othello.move(move.get_row(), move.get_col())
 
         self.print_winner()
 
@@ -67,7 +67,7 @@ class Controller:
     @staticmethod
     def print_move(whose_turn: str, move: Move):
         """
-        Print the player who made a move and the move they
+        Print the Player who made a move and the move they
         made on the specific coordinates on the board to the
         console.
         """

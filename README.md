@@ -67,9 +67,46 @@ check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
  	        Use the  update_othello()  function to communicate with the othello class. When a Token is clicked, the instance will try to make a move with the
       		clicked Token’s x and y coordinates. If a move is made, the instance will update all of the Tokens it contains with their new images through 			Token.set_image() according to the newly updated ollehtO board. If a valid move is not made, nothing happens. 
 
+*othello.Player:* The package which contains the player components:
 
+	*.move:*
+ 	    Contains row and column information for players that wants to make a move.
+	    get_row: return row of move.
+	    get_col: return column of move.
+	    to_string: return string representation of move.
+	    
+	*.player:* 
+	    The abstract class of the player classes.
+	    
+	*.player_easy:*
+ 	    An AI that makes moves at an easy difficulty.
+ 	    get_move: return worst_move.
+	
+	*.player_medium:* 
+	    An AI that makes moves at an medium difficulty.
+ 	    get_move: return random_move.
+	
+	*.player_hard:*
+ 	    An AI that makes moves at an hard difficulty.
+ 	    get_move: return best_move or random_move.
+ 	    
+	*.player_human:* 
+	    The human player.
+ 	    get_move: return a move object of where the user wants to move.
+ 	    
+	*.player_moves:* 
+	    Contains move algorithms.
+ 	    random_move: return a move object with a random valid row and column.
+ 	    best_move: return a move object for a move with the most returns.
+ 	    worst_move: return a move object for a move with the fewest returns.
+	    
 **Addendum**
+
 *Deval Patel:*
 
 I created the LICENSE.md file for this repository. In addition to this, I am responsible for all of the code and files in *othello.Application*. As for the README, 
 the High-Level Documentation for everything under *othello.Application* is written by me. The section *How to play the game* is written by me.
+
+*Mevan Rajakaruna:*
+
+I am responsible for the *othello.Player* package and all the code/classes within it. I also created the High-Level Documentation for *othello.Player*.
