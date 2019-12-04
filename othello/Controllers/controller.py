@@ -1,6 +1,6 @@
 from othello.OthelloGame.othello import Othello
-from othello.Player.player import Player
-from othello.Player.move import Move
+from othello.player.player import Player
+from othello.player.move import Move
 from othello.OthelloGame.board import Board
 
 
