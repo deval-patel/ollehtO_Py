@@ -41,3 +41,5 @@ class ImageFrame(Frame):
             print(self._board)
             for child in self.children.values():
                 child.set_image(self._board.board[child.get_x()][child.get_y()])
+                temp.grid(row=row, column=col)
+

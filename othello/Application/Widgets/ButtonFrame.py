@@ -31,5 +31,3 @@ class ButtonFrame(Frame):
         self.quit = Button(self, text="Exit", font=("Roboto", 20, "bold"), foreground=self.colour.TEXT_COLOUR,
                            width=14, padx=0, bg=self.colour.BUTTON_COLOUR)
         self.quit.grid(row=0, column=4)
-
-

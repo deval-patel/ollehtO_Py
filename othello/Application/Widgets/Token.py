@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from tkinter import *
 from othello.Application.Pictures.Pictures import Pictures
 
@@ -35,3 +36,7 @@ class Token(Button):
 
     def __str__(self):
         return "x: " + str(self._x) + ", y: "  +str(self._y)
+
+
+    def get_y(self):
+        return self._y

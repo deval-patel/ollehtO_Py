@@ -46,3 +46,8 @@ if __name__ == "__main__":
     app = Application(root)
     print("made app")
     root.mainloop()
+
+    root = Tk()
+    app = Application(root)
+    root.mainloop()
+

@@ -89,3 +89,4 @@ class Othello:
         """
 
         return self._board.__str__
+

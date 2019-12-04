@@ -226,4 +226,3 @@ class Board:
             visual += "\n" + "-" * 18
 
         return visual
-

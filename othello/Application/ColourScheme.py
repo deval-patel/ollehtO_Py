@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class ColourScheme:
     """
     The colour scheme for this application
@@ -19,3 +20,4 @@ class ColourScheme:
 
     def set_button_colour(self, bc: str):
         self.BUTTON_COLOUR = bc
+
