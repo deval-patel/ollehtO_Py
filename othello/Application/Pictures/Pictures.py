@@ -3,6 +3,9 @@ from PIL import Image, ImageTk
 
 
 class Pictures:
+    """
+    This class is responsible for generating the pictures required to display the GUI
+    """
     def __init__(self):
         self.image_name = ["EMPTY", "X", "O"]
         self.images = {}
@@ -14,4 +17,7 @@ class Pictures:
             self.images[i] = photo_img
 
     def get_image(self, img: str):
+        """
+        Return the corresponding Image, which matches the String representation of parameter img 
+        """
         return self.images[img]

@@ -2,20 +2,12 @@ from tkinter import *
 from othello.OthelloGame.othello import Othello
 from othello.Application.Widgets.Token import Token
 from othello.Application.ColourScheme import ColourScheme
-# example = [["" for i in range(8)] for j in range(8)]
-# for i in range(8):
-#     for j in range(8):
-#         if (i == 3 and j == 3) or (i == 4 and j == 4):
-#             example[i][j] = "X"
-#         elif (i == 3 and j == 4) or (i == 4 and j == 3):
-#             example[i][j] = "O"
-#         else:
-#             example[i][j] = "EMPTY"
 
 
 class ImageFrame(Frame):
     """
-    TODO: Explain
+    This class contains the board of the game. It handles how to make moves when the buttons on the grid are clicked.
+    When the buttons are clicked, the corresponding move is made in the Othello game.
     """
     colour: ColourScheme
     _othello: Othello  # The game to give and receive information from
@@ -33,11 +25,15 @@ class ImageFrame(Frame):
                 temp.grid(row=row, column=col)
 
     def update_othello(self, event: Token):
+	"""
+	This is the event-handler for all of the Tokens on the board. When any Token is clicked, this method 
+	is called. This method will make a move at the location of the Token using its x and y co-ordinates.
+	It only makes a move if there is a valid move at the Token's location.
+	"""
         move = self._othello.move(event.get_x(), event.get_y())
         print(move)
         if move:
             self._board = self._othello.get_board()
-            # TODO: Printing board to test output, please get rid of this once you fix the problem @Andrew
             print(self._board)
             for child in self.children.values():
                 child.set_image(self._board.board[child.get_x()][child.get_y()])

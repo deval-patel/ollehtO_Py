@@ -4,7 +4,9 @@ from othello.Application.ColourScheme import ColourScheme
 
 class ButtonFrame(Frame):
     """
-    Todo: Explain
+    This widget contains all of the buttons which are not related to the actual game board.
+    It contains the Game Modes, Settings and Exit Buttons. These buttons are created here and stored
+    in the instance of this class which is a Frame.
     """
     colour: ColourScheme
     game_mode: Button

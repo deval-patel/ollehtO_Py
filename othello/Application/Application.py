@@ -7,7 +7,9 @@ from othello.OthelloGame.othello import Othello
 
 class Application:
     """
-    TODO: Explain
+    This class contains the main Application for ollehtO.
+    It is responsible for creating the new components and main widgets required to make the GUI visualize.
+    Run this file to start the game.
     """
     frame: Frame
     header: Label
@@ -18,6 +20,7 @@ class Application:
     colour: ColourScheme
     othello: Othello
 
+    
     def __init__(self, master):
         self.othello = Othello()
         self.colour = ColourScheme()
@@ -37,7 +40,11 @@ class Application:
         self.buttons = ButtonFrame(self.root, self.colour)
         self.buttons.grid(row=3, column=0)
 
+    
     def set_message(self, msg: str):
+	"""
+	Sets the on screen message
+	""""
         self.message.set(msg)
 
 
