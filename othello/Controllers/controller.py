@@ -57,11 +57,14 @@ class Controller:
         """
         Prints the current board state to the console
         """
+        board_string = self.othello.get_board_string()
+        player_one_count = self.othello.piece_count(Board.player1)
+        player_two_count = self.othello.piece_count(Board.player2)
+        current_player = self.othello.get_current_player()
 
-        string_report = self.othello.get_board_string() + \
-                        Board.player1 + ":" + self.othello.piece_count(Board.player1) + " " + \
-                        Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " + \
-                        str(self.othello.get_current_player()) + " moves next"
+        string_report = board_string, Board.player1, ":", str(player_one_count), \
+                        " ", Board.player2, ":", str(player_two_count), \
+                        " ", str(current_player), " moves next"
         print(string_report)
 
     @staticmethod
@@ -72,7 +75,7 @@ class Controller:
         console.
         """
 
-        string_report = whose_turn + " makes move: " + move
+        string_report = whose_turn + " makes move: " + str(move)
         print(string_report)
 
     def print_winner(self):
@@ -80,7 +83,7 @@ class Controller:
         Print the final board state of the game and who won the game
         """
 
-        string_report = self.othello.get_board_string() + Board.player1 + ":" + self.othello.piece_count() + " " +\
-                        Board.player2 + ":" + self.othello.piece_count(Board.player2) + " " +\
-                        self.othello.check_winner() + " won"
+        string_report = self.othello.get_board_string(), Board.player1, ":", self.othello.piece_count(), " ", \
+                        Board.player2, ":", self.othello.piece_count(Board.player2), " ", \
+                        self.othello.check_winner(), " won"
         print(string_report)
