@@ -35,11 +35,41 @@ will win.
 
 If you want a visual representation of the rules of this game
 check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
+
+
 **High-Level Documentation**
  
+*othello.Application:* The package which contains the view component:
 
+	*.Application:*
+ 	    This file is used to set up the GUI. It initializes all of the main widgets (Labels and Frames) with help from classes in the package .Widget. The 		    function set_message() should be used to update the message displayed at the bottom of the screen. 
+	
+	*.ColourScheme:* 
+	    Contains the colour scheme of the GUI. The ColourScheme class should be used to customize widgets. Should the colour scheme change, the background,
+	    text-colour and button-colour can be changed with their respective setter functions.
+
+	*.Pictures: (Package)*
+	    Contains the pictures for the ollehtO Board. 
+	    *.Pictures:* A class to handle the conversion of PNG images to ImageTK objects. Use get_image() to get the ImageTK of the PNG files.
+
+	*.Widgets: (Package)*
+
+	    *.Token:* 
+	        A widget used as the tokens for ollehtO which is a child of the Button class. 
+	        It contains the x,y value as attributes for simplicity to access them, use the appropriate getters. The set_image() function is to update the image of 			this Token, it takes in a String which has the name of the image file (excluding “.png”). When the Token is clicked, it calls update_parent()(an 			instance of ImageFrame) passing an instance of itself, letting the ImageFrame know that it got clicked.
+	    
+	    *.ButtonFrame:*
+	        Initializes the Buttons for Game Modes, Settings, and Exit. 
+	        The functionality of these buttons are not implemented yet.
+
+	    *.ImageFrame:*
+	        Initializes the Buttons for the ollehtO game board.
+ 	        Use the  update_othello()  function to communicate with the othello class. When a Token is clicked, the instance will try to make a move with the
+      		clicked Token’s x and y coordinates. If a move is made, the instance will update all of the Tokens it contains with their new images through 			Token.set_image() according to the newly updated ollehtO board. If a valid move is not made, nothing happens. 
 
 
 **Addendum**
 *Deval Patel:*
-I created the LICENSE.md file 
+
+I created the LICENSE.md file for this repository. In addition to this, I am responsible for all of the code and files in *othello.Application*. As for the README, 
+the High-Level Documentation for everything under *othello.Application* is written by me. The section *How to play the game* is written by me.
