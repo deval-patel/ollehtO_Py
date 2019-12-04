@@ -1,8 +1,25 @@
 # Othello_Py
 A GUI version of the board game Othello. Coded in Python.
 
+
 **How to install and run the game:**
 
+Before installing make sure you have following requirements:
++ [Python 3.7.x](https://www.python.org/downloads/)
++ [PIP](https://pip.pypa.io/en/stable/installing/)
++ [GIT](https://git-scm.com/downloads)
+
+You can download the game files from GitHub by pressing "Clone or download", followed by "Download ZIP".
+
+![Downloading from GitHub](/images/downloadZIP.png)
+
+You can also download game files from the terminal by using git, "git clone https://github.com/deval-patel/ollehtO_Py.git".
+
+Once you downloaded the files, open your terminal and navigate to the root folder of ollehtO. Install requirements using PIP, "pip install -r requirements.txt".
+
+![Installing requirements](/images/installRequirements.png)
+
+You can run the app by navigating to ollehtO_py/othello/Application and running Application.py using a terminal command "python3 Application.py".
  
 **How to play the game**
 The goal of this game is to have as many of your own type of tokens as possible. 
@@ -67,6 +84,31 @@ check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
  	        Use the  update_othello()  function to communicate with the othello class. When a Token is clicked, the instance will try to make a move with the
       		clicked Token’s x and y coordinates. If a move is made, the instance will update all of the Tokens it contains with their new images through 			Token.set_image() according to the newly updated ollehtO board. If a valid move is not made, nothing happens. 
 
+*othello.OthelloGame:* The package which contains the game rule components:
+
+	*.board:*
+ 	    Responsible for keeping track of everything that happens on an othello board. Handles board related tasks such as checking which player is moving, requesting a move, etc. 
+	    is_valid_coordinate: checks if a given coordinate is valid.
+	    get_player: get a player at a given location.
+	    opposing_player: get an opposing player for the requested player.
+	    get_token_count: return token count for the requested player.
+	    player_variation: return a player that has a variation of a current player followed by an opposing player in a requested direction.
+	    flip_tokens: flip tokens at a given location.
+	    has_move: return a player thast has a valid move.
+	    move: make a move for a given player.
+	    _possible_move: return which player can move in a requested direction.
+	    
+	*.othello:* 
+	    Responsible for managing the game and its decisions.
+	    get_current_player: return player that currently moving
+	    get_board: return current board (list of lists).
+	    move: attempt moving at a requested location.
+	    piece_count: return number of pieces given player has on the board.
+	    check_game_over: check wheter game has ended.
+	    check_winner: return winner of the game.
+	    get_board_string: return string representation of the board used for testing.
+
+
 *othello.Player:* The package which contains the player components:
 
 	*.move:*
@@ -110,3 +152,7 @@ the High-Level Documentation for everything under *othello.Application* is writt
 *Mevan Rajakaruna:*
 
 I am responsible for the *othello.Player* package and all the code/classes within it. I also created the High-Level Documentation for *othello.Player*.
+
+*Andriy Gumenyuk:*
+
+I was responsible for creating *Othello.Board.py* class and all of the code inside. As well as creating High-Level Documentation for *Othello.OthelloGame*
