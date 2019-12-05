@@ -87,12 +87,14 @@ check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
 *othello.OthelloGame:* The package which contains the game rule components:
 
 	*.board:*
- 	    Responsible for keeping track of everything that happens on an othello board. Handles board related tasks such as checking which player is moving, requesting a move, etc. 
+ 	    Responsible for keeping track of everything that happens on an othello board. Handles board related tasks such 
+ 	    as checking which player is moving, requesting a move, etc. 
 	    is_valid_coordinate: checks if a given coordinate is valid.
 	    get_player: get a player at a given location.
 	    opposing_player: get an opposing player for the requested player.
 	    get_token_count: return token count for the requested player.
-	    player_variation: return a player that has a variation of a current player followed by an opposing player in a requested direction.
+	    player_variation: return a player that has a variation of a current player followed by an opposing player in a 
+	    requested direction.
 	    flip_tokens: flip tokens at a given location.
 	    has_move: return a player thast has a valid move.
 	    move: make a move for a given player.
@@ -155,4 +157,4 @@ I am responsible for the *othello.Player* package and all the code/classes withi
 
 *Andriy Gumenyuk:*
 
-I was responsible for creating *Othello.Board.py* class and all of the code inside. As well as creating High-Level Documentation for *Othello.OthelloGame*
+I was responsible for creating *Othello.Board.py* class and all of the code inside. For the ReadMe file I wrote the installation process and created High-Level Documentation for *Othello.OthelloGame*.
