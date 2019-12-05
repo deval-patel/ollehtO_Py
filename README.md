@@ -36,6 +36,93 @@ will win.
 If you want a visual representation of the rules of this game
 check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
 
+**Extending the Game**
+
+The best way to extend this game is through the implementation of new AI. To do so, you will have to:
+1. Add a new move strategy in *player_moves* file
+2. Create a new AI class in the *othello.Player* package
+3. Implement a new controller that supports this AI
+
+Example: Implement a new AI named *Einstein* that takes the smartest move available.
+
+*Step 1:* Add a new move strategy in *player_moves* file
+
+    We implement a new method inside the *PlayerMoves* class that analyzes
+    the board and determines the smartest move available on the board.
+    
+    Example:
+        
+        def smartest_move(self) -> tuple:
+            """ Returns the smartest move on the board.
+            """
+            
+            #Your algorithm here
+            
+         
+*Step 2:* Create a new AI class in the *othello.Player* package
+
+    We create a new AI python file named *player_einstein* that extends
+    the *Player* class inside the *Player* folder that calls the new 
+    move method implemented earlier inside a get_move function. 
+    
+    Example:
+    
+    PlayerEinstein(Player):
+        """ An AI Player that plays at a hard difficulty.
+        
+        === Private Atributes ===
+        #Attributes here
+        """
+    
+        #Initializer here
+        
+        def get_move(self) -> tuple:
+            """ Returns the smartest move.
+            """
+            
+            return PlayerMoves(self._othello, self._character).smartest_move
+    
+    ! Note: All AI classes MUST have a get_move function. Otherwise, the 
+    controller will crash trying to call a get_move that does not exist
+    
+*Step 3:* Implement a new controller that supports this AI
+
+    Inside the *Controllers* folder, we will create a new user_vs_einstein
+    file that contains the UserVSEinstein class which extends the 
+    Controller class. This new class will also instantiate the second
+    player as a PlayerEinstein
+    
+    Example:
+    
+    class UserVSEasy(Controller):
+        """
+        This class is responsible for instantiating the human and einstein
+        AI players and running the controller through the main class
+        """
+
+        def __init__(self):
+            """
+            Initialize a human player and an einstein AI
+            """
+    
+            super().__init__()
+            self.player_one = PlayerHuman(self.othello, Board.player1)
+            self.player_two = PlayerEinstein(self.othello, Board.player2)
+
+
+        def main():
+            """
+            Run this controller
+            """
+        
+            othello_controller = UserVSEinstein()
+            othello_controller.play()
+            
+        if __name__ == "__main__":
+            main()
+    
+
+    
 
 **High-Level Documentation**
  
@@ -99,7 +186,41 @@ check this video out! [Othello Rules](https://youtu.be/lO2pEK33SSw)
  	    random_move: return a move object with a random valid row and column.
  	    best_move: return a move object for a move with the most returns.
  	    worst_move: return a move object for a move with the fewest returns.
-	    
+	
+*othello.Controllers:* The package containing the game controllers:
+    
+    *.controller:*
+ 	    The abstract super class for all other controllers.
+ 	    play: continuously get moves from the player who has the turn.
+ 	    print_state: print the current board state to the console.
+ 	    print_move: print the details of the last move made to the console.
+ 	    print_winner: print the final board state and the winner of the game.
+ 	    
+ 	    *subclasses:*
+ 	        user_vs_user
+ 	        user_vs_easy
+ 	        user_vs_medium
+ 	        user_vs_hard
+ 	    
+ 	*.user_vs_user*
+ 	    Controller that instantiates two player_human objects and plays the game by
+ 	    calling the superclass play() method.
+    
+    *.user_vs_easy*
+ 	    Controller that instantiates a player_human object and an easy AI.
+ 	    This class plays the game through the main method by calling the superclass
+ 	    play() method.
+ 	
+ 	*.user_vs_medium*
+ 	    Controller that instantiates a player_human objects and a medium AI.
+ 	    This class plays the game through the main method by calling the superclass
+ 	    play() method.
+ 	
+ 	*.user_vs_hard*
+ 	    Controller that instantiates a player_human objects and a hard AI.
+ 	    This class plays the game through the main method by calling the superclass
+ 	    play() method.
+
 **Addendum**
 
 *Deval Patel:*
@@ -110,3 +231,9 @@ the High-Level Documentation for everything under *othello.Application* is writt
 *Mevan Rajakaruna:*
 
 I am responsible for the *othello.Player* package and all the code/classes within it. I also created the High-Level Documentation for *othello.Player*.
+
+*Brendan Tiu:*
+
+I implemented the controller superclass inside the *othello.Controllers* package and all respective subclasses.
+Additionally, I wrote the High-Level Documentation for *othello.Controllers* and the instructions for extending our
+game with an example.
